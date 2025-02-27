@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8" />
+    <title>Survey Program</title>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/react/16.14.0/umd/react.development.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/react-dom/16.14.0/umd/react-dom.development.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/babel-standalone/6.26.0/babel.min.js"></script>
+    <style>
+        .score-buttons {
+            display: flex;
+            justify-content: center;
+            gap: 10px;
+        }
+        .score-btn {
+            padding: 10px 20px;
+            font-size: 16px;
+            background-color: #007bff;
+            color: #fff;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+        .score-btn:hover {
+            background-color: #0056b3;
+        }
+        .emoji {
+            font-size: 60px;
+            text-align: center;
+            margin-top: 20px;
+        }
+        .modal {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background-color: rgba(0, 0, 0, 0.5);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+        .modal-content {
+            background-color: #fff;
+            padding: 20px;
+            border-radius: 5px;
+            text-align: center;
+        }
+        .close-btn {
+            padding: 10px 20px;
+            font-size: 16px;
+            background-color: #007bff;
+            color: #fff;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background-color 0.3s;
+            margin-top: 10px;
+        }
+        .close-btn:hover {
+            background-color: #0056b3;
+        }
+        h1, h2, h3, p, ul {
+            font-family: Arial, sans-serif;
+        }
+    </style>
+</head>
+<body>
+    <div id="root"></div>
+    <script type="text/babel">
+        function SurveyProgram() {
+            const [scores, setScores] = React.useState([]);
+            const [showModal, setShowModal] = React.useState(false);
+
+            const handleScoreClick = (score) => {
+                if (score === 5) {
+                    setShowModal(true);
+                }
+                setScores((prevScores) => [...prevScores, score]);
+            };
+
+            const handleCloseModal = () => {
+                setShowModal(false);
+            };
+
+            return (
+                <div>
+                    <h1>Telephone Company Provider Survey</h1>
+                    <p>Rate your satisfaction with the service:</p>
+                    <div className="score-buttons">
+                        {[1, 2, 3, 4, 5].map((num) => (
+                            <button key={num} className="score-btn" onClick={() => handleScoreClick(num)}>{num}</button>
+                        ))}
+                    </div>
+                    <h2>Scores:</h2>
+                    {scores.length === 0 ? (
+                        <p>No scores yet.</p>
+                    ) : (
+                        <ul>
+                            {scores.map((score, index) => (
+                                <li key={index}>{score}</li>
+                            ))}
+                        </ul>
+                    )}
+                    {scores.includes(5) && (
+                        <div className="emoji">
+                            <span role="img" aria-label="Party emoji">🎉</span>
+                        </div>
+                    )}
+                    {showModal && (
+                        <div className="modal">
+                            <div className="modal-content">
+                                <h3>Thank you!</h3>
+                                <p>Your feedback is greatly appreciated.</p>
+                                <button className="close-btn" onClick={handleCloseModal}>Close</button>
+                            </div>
+                        </div>
+                    )}
+                </div>
+            );
+        }
+
+        ReactDOM.render(
+            <React.StrictMode>
+                <SurveyProgram />
+            </React.StrictMode>,
+            document.getElementById('root')
+        );
+    </script>
+</body>
+</html>

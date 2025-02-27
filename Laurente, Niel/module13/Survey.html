@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Survey Form</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f4;
+            text-align: center;
+            margin: 0;
+            padding: 0;
+        }
+        h1 {
+            color: #333;
+        }
+        form {
+            background: white;
+            width: 50%;
+            margin: 20px auto;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+        }
+        fieldset {
+            border: none;
+            margin-bottom: 20px;
+            padding: 10px;
+            background: #f9f9f9;
+            border-radius: 5px;
+        }
+        legend {
+            font-weight: bold;
+            color: #555;
+        }
+        label {
+            margin-right: 10px;
+            font-size: 16px;
+        }
+        input[type="radio"] {
+            margin-left: 5px;
+        }
+        input[type="submit"] {
+            background: #28a745;
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            font-size: 16px;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background 0.3s;
+        }
+        input[type="submit"]:hover {
+            background: #218838;
+        }
+    </style>
+</head>
+<body>
+    <h1>Survey Form</h1>
+    <form action="#" method="post">
+        <fieldset>
+            <legend>Question 1: How likely are you to recommend our service?</legend>
+            <label>1 <input type="radio" name="q1" value="1"></label>
+            <label>2 <input type="radio" name="q1" value="2"></label>
+            <label>3 <input type="radio" name="q1" value="3"></label>
+            <label>4 <input type="radio" name="q1" value="4"></label>
+            <label>5 <input type="radio" name="q1" value="5"></label>
+        </fieldset>
+        <fieldset>
+            <legend>Question 2: How satisfied are you with our website's usability?</legend>
+            <label>1 <input type="radio" name="q2" value="1"></label>
+            <label>2 <input type="radio" name="q2" value="2"></label>
+            <label>3 <input type="radio" name="q2" value="3"></label>
+            <label>4 <input type="radio" name="q2" value="4"></label>
+            <label>5 <input type="radio" name="q2" value="5"></label>
+        </fieldset>
+        <fieldset>
+            <legend>Question 3: How well did our support team address your concerns?</legend>
+            <label>1 <input type="radio" name="q3" value="1"></label>
+            <label>2 <input type="radio" name="q3" value="2"></label>
+            <label>3 <input type="radio" name="q3" value="3"></label>
+            <label>4 <input type="radio" name="q3" value="4"></label>
+            <label>5 <input type="radio" name="q3" value="5"></label>
+        </fieldset>
+        <input type="submit" value="Submit">
+    </form>
+</body>
+</html>
